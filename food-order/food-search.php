@@ -12,9 +12,7 @@
 
         </div>
     </section>
-    <!-- fOOD sEARCH Section Ends Here -->
-
-
+    <!-- Food Search Section Ends Here -->
 
     <!-- fOOD MEnu Section Starts Here -->
     <section class="food-menu">

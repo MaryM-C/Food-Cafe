@@ -83,5 +83,5 @@
             <div class="clearfix"></div>
         </div>
     </section>
-    <!-- fOOD Menu Section Ends Here -->
+    <!-- Food Menu Section Ends Here -->
 <?php include('partials-front/footer.php');?>

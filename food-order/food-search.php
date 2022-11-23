@@ -12,9 +12,11 @@
 
         </div>
     </section>
-    <!-- Food Search Section Ends Here -->
+    <!-- fOOD sEARCH Section Ends Here -->
 
-    <!-- Food Menu Section Starts Here -->
+
+
+    <!-- fOOD MEnu Section Starts Here -->
     <section class="food-menu">
         <div class="container">
             <h2 class="text-center">Food Menu</h2>
@@ -68,7 +70,7 @@
                         </p>
                         <br>
 
-                        <a href="#" class="btn btn-primary">Order Now</a>
+                        <a href="<?php echo SITEURL;?>order.php?food_id=<?php echo $id;?>" class="btn-primary">Order Now</a>
                         </div>
                         </div>
 
@@ -83,5 +85,5 @@
             <div class="clearfix"></div>
         </div>
     </section>
-    <!-- Food Menu Section Ends Here -->
+    <!-- fOOD Menu Section Ends Here -->
 <?php include('partials-front/footer.php');?>

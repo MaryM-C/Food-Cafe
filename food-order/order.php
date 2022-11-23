@@ -30,11 +30,11 @@
     <section class="food-search">
         <div class="container">
             
-            <h2 class="text-center text-white">Fill this form to confirm your order.</h2>
+            <h2 class="text-center text-yellow">Fill this form to confirm your order.</h2>
 
             <form action="" method="POST" class="order">
                 <fieldset>
-                    <legend>Selected Food</legend>
+                    <legend><h3>Selected Food</h3></legend>
 
                     <div class="food-menu-img">
                         <?php 
@@ -55,12 +55,12 @@
                     </div>
     
                     <div class="food-menu-desc">
-                        <h3><?php echo $title;?></h3>
+                        <h2><?php echo $title;?></h2>
                         <input type = "hidden" name = "food" value = "<?php echo $title;?>">
-                        <p class="food-price">₱ <?php echo $price;?></p>
-                        <input type = "hidden" name="price" value="<?php echo $price;?>">
+                        <p class="food-price2">₱ <?php echo $price;?></p>
+                        <input type = "hidden" name="price" value="<?php echo $price;?>"> <br>
 
-                        <div class="order-label">Quantity</div>
+                        <div class="food-detail2"><h4>Quantity</h4></div> <br>
                         <input type="number" name="qty" class="input-responsive" value="1" required>
                         
                     </div>
@@ -68,15 +68,15 @@
                 </fieldset>
                 
                 <fieldset>
-                    <legend>Delivery Details</legend>
-                    <div class="order-label">Full Name</div>
+                    <legend><h3>Delivery Details</h3></legend>
+                    <div class="food-detail2"><h4>Full Name</h4></div>
                     <input type="text" name="full-name" placeholder="Name" class="input-responsive" required>
 
-                    <div class="order-label">Phone Number</div>
-                    <input type="tel" name="contact" placeholder="E.g. 9843xxxxxx" class="input-responsive" required>
+                    <div class="food-detail2"><h4>Phone Number</h4></div>
+                    <input type="tel" name="contact" placeholder="Ex. 09843xxxxxx" class="input-responsive" required>
 
-                    <div class="order-label">Address</div>
-                    <textarea name="address" rows="10" placeholder="E.g. Street, City, Country" class="input-responsive" required></textarea>
+                    <div class="food-detail2"><h4>Address</h4></div>
+                    <textarea name="address" rows="10" placeholder="E.g. Room Number/Office, Building" class="input-responsive" required></textarea>
 
                     <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
                 </fieldset>
@@ -120,7 +120,7 @@
                     //check whether the query executed successfully
                     if($res2 == true ) {
                         //query executed and order saved
-                        $_SESSION['order'] =  "<div class='success text-center'>Order placed successfully!</div>";
+                        $_SESSION['order'] =  "<div class='success text-center'><h2>Order placed successfully!<h2></div>";
                         header('location:'.SITEURL);
 
                     } else {
@@ -129,9 +129,6 @@
                         header('location:'.SITEURL);
                         
                     }
-
-
-                    
 
                 } else {
                     

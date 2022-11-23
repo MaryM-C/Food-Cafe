@@ -11,7 +11,7 @@ body, section.food-menu {
     background: #174A41;
 }
 .container{
-    width: 90%;
+    width: 80%;
     margin: 0 auto;
     padding: 1%;
     
@@ -32,7 +32,11 @@ body, section.food-menu {
 .text-left{
     text-align: left;
 }
-.text-white{
+.text-yellow{
+    color: #FDB600;
+}
+
+legend{
     color: white;
 }
 
@@ -146,6 +150,19 @@ fieldset{
     border-radius: 5px;
 }
 
+.food-menu-desc input[type="number"] {
+    display: block;
+    padding: 1%;
+    font-size: 1rem;
+}
+input[type="text"], input[type="tel"], textarea {
+    display: block;
+    padding: 2%;
+    width: 40%;
+    margin-bottom: 2%;
+    font-size: 1rem;
+}
+
 
 /* CSS for Categories */
 .categories{
@@ -191,9 +208,19 @@ fieldset{
     color:#747d8c;
     
 }
+.food-price2{
+    font-size: 1.2rem;
+    margin: 2% 0;
+    color:white;
+    
+}
 .food-detail{
     font-size: 1rem;
     color: #747d8c;
+}
+.food-detail2{
+    font-size: 1rem;
+    color: #FDB600;
 }
 
 

@@ -1,0 +1,27 @@
+
+/* CSS for Log In */
+body{
+    margin: 0;
+    padding: 0;
+    background-image: url("../images/bg-cafe.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.w-450 {
+    width: 540px;
+    background-color: rgb(0, 59, 0);
+    padding: 3px;
+}
+.vh-100 {
+	min-height: 100vh;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+

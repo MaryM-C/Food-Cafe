@@ -8,12 +8,18 @@
 
 .wrapper{
     padding: 1%;
-    width: 90%; 
+    width: 80%; 
     margin: 0 auto;
 }
 
 .text-center {
     text-align: center;
+}
+
+.text-left-align {
+    padding: 2%;
+    margin: 2% auto;
+    width: 80%;
 }
 
 .clearfix {
@@ -42,6 +48,17 @@ table tr td {
 }
 
 .btn-primary {
+    
+    background-color: #FDB600;
+    padding: 1%;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    width: 20%;
+    
+}
+.btn-primary-30 {
+    
     background-color: #FDB600;
     padding: 1%;
     color: white;
@@ -49,20 +66,21 @@ table tr td {
     font-weight: bold;
     width: 30%;
     
-    
 }
 
 .btn-primary:hover {
     background-color: #d29704;
 }
 .btn-secondary {
+    display: inline-flex;
     background-color: #174A41;
     padding: 1%;
     color: white;
     text-decoration: none;
     font-weight: bold;
-    width: 30%;
-    width: 200px;
+    width: 20%;
+    text-align: center;
+    
 }
 
 .btn-secondary:hover {
@@ -74,7 +92,8 @@ table tr td {
     color: white;
     text-decoration: none;
     font-weight: bold;
-    width: 30%;
+    width: 20%;
+    text-align: center;
 }
 
 .btn-danger:hover {
@@ -137,6 +156,22 @@ table tr td {
 .login{
     border:1px solid grey;
     width:30%;
+    height: 50%;
     margin: 5% auto;
     padding: 2%;
+}
+input[type="text"], input[type="password"]{
+    display: block;
+    width: 100%;
+    padding: 2%;
+    margin: 2% auto;
+
+}
+input[type="date"]{
+    width: 13%;
+    padding: 1%;
+    margin: 1% auto;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
 }

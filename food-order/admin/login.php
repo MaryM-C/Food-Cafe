@@ -21,13 +21,13 @@
             ?>
             <br><br>
             <!--Login Form Starts Here-->
-            <form action="" method="POST" class="text-center">
-                Username: <br>
+            <form action="" method="POST" class="text-left-align">
+                Username <br>
                 <input type="text" name="username" placeholder="Enter Username"><br><br>
-                Password: <br>
+                Password <br>
                 <input type="password" name="password" placeholder="Enter Password"><br><br>
-
-                <input type="submit" name="submit" value="Login" class="btn-primary">
+                
+                <input type="submit" name="submit" value="Login" class="btn-primary-30">
             </form>
             <!--Login Form Ends Here-->
         </div>

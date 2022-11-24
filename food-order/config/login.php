@@ -3,7 +3,7 @@ session_start();
 
 if(isset($_POST['uname']) && isset($_POST['pass'])){
 
-      include "db_connect.php";
+    include "db_connect.php";
 
     $uname = $_POST['uname'];
     $pass = $_POST['pass'];
@@ -20,7 +20,7 @@ if(isset($_POST['uname']) && isset($_POST['pass'])){
 	    exit;
     }else {
 
-    	$sql = "SELECT * FROM users WHERE unames = ?";
+    	$sql = "SELECT * FROM tbl_user WHERE unames = ?";
     	$stmt = $conn->prepare($sql);
     	$stmt->execute([$uname]);
 

@@ -1,7 +1,7 @@
 <?php
 
 if(isset($_POST['fname']) && isset($_POST['uname']) && isset($_POST['email']) && isset($_POST['pass'])){
-    include "db_connect.php";
+    include('db_connect.php');
 
     $fname=$_POST['fname'];
     $uname=$_POST['uname'];
@@ -41,7 +41,7 @@ if(isset($_POST['fname']) && isset($_POST['uname']) && isset($_POST['email']) &&
            
         }
         else{
-            $sql = "SELECT * FROM users WHERE unames = ?";
+            $sql = "SELECT * FROM tbl_user WHERE unames = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$uname]);
     
@@ -53,7 +53,7 @@ if(isset($_POST['fname']) && isset($_POST['uname']) && isset($_POST['email']) &&
             else{
                 // hashing the password
                 $pass = password_hash($pass, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO users(fname,unames,email,passw) VALUES(?,?,?,?)";
+                $sql = "INSERT INTO tbl_user(fname,unames,email,passw) VALUES(?,?,?,?)";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute([$fname, $uname, $email, $pass]);
                 header("Location: ../SignUp.php?success=Your account has been created successfully");

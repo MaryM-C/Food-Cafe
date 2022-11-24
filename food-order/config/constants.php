@@ -3,7 +3,7 @@
     session_start();
 
     // create consts to store non repeating values
-    define('SITEURL', 'http://localhost/food-order/');
+    define('SITEURL', 'http://localhost/Food-Cafe/food-order/');
     define('LOCALHOST', 'localhost');
     define('DB_USERNAME', 'root');
     define('DB_PASSWORD', '');

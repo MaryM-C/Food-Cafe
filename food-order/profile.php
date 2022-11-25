@@ -1,14 +1,21 @@
 <?php 
 session_start();
 include_once "config/db_connect.php";
-$sql = "SELECT * FROM tbl_user";
+$sql = "SELECT * FROM tbl_user WHERE id = ?";
 $user= $conn->prepare($sql);
-$user->execute();
-$row=$user->fetch();
+$id=$_SESSION['id'];
+$user->execute([$id]);
 
-$fullName=$row['fname'];
-$uname=$row['unames'];
-$email=$row['email'];
+
+
+if($user->rowCount() == 1){
+   
+    $row=$user->fetch();
+
+    $fullName=$row['fname'];
+    $uname=$row['unames'];
+    $email=$row['email'];
+}
 
 
 
@@ -69,8 +76,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {?>
                             <label class="h3 mb-1">Email address: <?=$email?></label>
                         </div>
                         <!-- Save changes button-->
-                        <button class="btn btn-primary bt1 mb-1" type="button">Edit Profile</button>
-                        <button class="btn btn-success bt1"  type="button">LOG OUT</button>
+                        <a class="btn btn-primary bt1 mb-2" href="#" role="button">Edit Profile</a>
+                        <a class="btn btn-success " href="logout.php" role="button">LOG OUT</a>
+                        
                     </form>
                 </div>
             </div>

@@ -31,8 +31,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {?>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- update modal-->
+<div class="modal fade" id="editProfile" tabindex="-1" role="dialog" aria-labelledby="editProfileLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -42,7 +42,40 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {?>
         </button>
       </div>
       <div class="modal-body">
-        ...
+            <label for="fullname">Fullname</label>
+            <input type="text" class="form-control w-100 mb-1" id="fullname" placeholder="<?=$fullName?>">
+
+            <label for="username">Username</label>
+            <input type="text" class="form-control w-100 mb-1" id="username" placeholder="<?=$uname?>">
+            
+            <label for="emails">Email</label>
+            <input type="email" class="form-control w-100 mb-1" id="emails" placeholder="<?=$email?>">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Change password modal-->
+<div class="modal fade" id="changePassword" tabindex="-1" role="dialog" aria-labelledby="changePasswordLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Change password</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+            <label for="oldpassword">Old Password</label>
+            <input type="password" class="form-control w-100 mb-3" id="oldpassword" placeholder="Enter your old password">
+
+            <label for="newpassword">New Password</label>
+            <input type="password" class="form-control w-100 mb-1" id="newpassword" placeholder="Enter new password">
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -98,7 +131,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {?>
                         </div>
                         <!-- Save changes button-->
                         
-                        <a class="btn btn-primary bt1 mb-2" data-toggle="modal" data-target="#exampleModal" role="button" >Edit Profile</a>
+                        <a class="btn btn-primary bt1 mb-2" data-toggle="modal" data-target="#editProfile" role="button" >Edit Profile</a>
+                        <a class="btn btn-primary bt1 mb-2" data-toggle="modal" data-target="#changePassword" role="button" >Change password</a>
                         <a class="btn btn-success " href="logout.php" role="button">LOG OUT</a>
                         
                     </form>

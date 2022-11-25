@@ -15,6 +15,7 @@ if($user->rowCount() == 1){
     $fullName=$row['fname'];
     $uname=$row['unames'];
     $email=$row['email'];
+    $id=$row['id'];
 }
 
 
@@ -88,7 +89,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {?>
 <div class="container-xl px-4 mt-4">
     <!-- Account page navigation-->
     <nav class="nav nav-borders">
-        <a class="nav-link active ms-0 text-warning" href="index.php" >Back to Home</a>
+        <a class="nav-link active ms-0 text-warning" href="index.php">Back to Home</a>
         
     </nav>
     <hr class="mt-0 mb-4">
@@ -103,7 +104,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {?>
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->
-                    <button class="btn btn-primary" type="button">Upload new image</button>
+                    <button class="btn btn-primary p-6" type="button">Upload new image</button>
                 </div>
             </div>
         </div>

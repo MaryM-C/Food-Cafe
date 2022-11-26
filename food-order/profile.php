@@ -44,18 +44,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {?>
       </div>
       <div class="modal-body">
             <label for="fullname">Fullname</label>
-            <input type="text" class="form-control w-100 mb-1" id="fullname" placeholder="<?=$fullName?>">
+            <input type="text" class="form-control w-100 mb-1" name="fullname"  placeholder="<?=$fullName?>">
 
             <label for="username">Username</label>
-            <input type="text" class="form-control w-100 mb-1" id="username" placeholder="<?=$uname?>">
+            <input type="text" class="form-control w-100 mb-1" iname="username" placeholder="<?=$uname?>">
             
             <label for="emails">Email</label>
-            <input type="email" class="form-control w-100 mb-1" id="emails" placeholder="<?=$email?>">
+            <input type="email" class="form-control w-100 mb-1" iname="emails" placeholder="<?=$email?>">
 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <a class="btn btn-primary " href="update.php" role="button">Save changes</a>
       </div>
     </div>
   </div>

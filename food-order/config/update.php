@@ -13,6 +13,9 @@ if(isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['email
     if (empty($fname)){
         
     }
+    else{
+        
+    }
     if(empty($uname)){
         
     }

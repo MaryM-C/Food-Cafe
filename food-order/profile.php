@@ -5,17 +5,17 @@ $sql = "SELECT * FROM tbl_user WHERE id = ?";
 $user= $conn->prepare($sql);
 $id=$_SESSION['id'];
 $user->execute([$id]);
-
+ 
 
 
 if($user->rowCount() == 1){
    
-    $row=$user->fetch();
+  $row=$user->fetch();
 
-    $fullName=$row['fname'];
-    $uname=$row['unames'];
-    $email=$row['email'];
-    $id=$row['id'];
+  $fullName=$row['fname'];
+  $uname=$row['unames'];
+  $email=$row['email'];
+  $id=$row['id'];
 }
 
 

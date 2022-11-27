@@ -1,4 +1,8 @@
-<?php include('config/constants.php');?>
+<?php 
+include_once "config/db_connect.php";
+include('config/constants.php');
+if (isset($_SESSION['id']) && isset($_SESSION['fname'])){
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +15,7 @@
     <!-- Link our CSS file -->
     <link rel="stylesheet" href="css/style.css">
 </head>
-
+ 
 <body>
     <!-- Navbar Section Starts Here -->
     <section class="navbar">
@@ -48,3 +52,9 @@
         </div>
     </section>
     <!-- Navbar Section Ends Here -->
+
+    <?php }
+
+else {
+	header("Location: login.php");
+	exit;} ?>

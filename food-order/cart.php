@@ -50,7 +50,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {?>
                                 <td class='text-white'>$qty</td>
                                 <td class='text-white'>$price</td>
                                 <td class='text-white'>$status</td>
-                                <td> <a class='btn btn-danger' href='#' role='button'>remove</a> </td>
+                                <td> <a class='btn btn-danger' href='#' role='button'>cancel order</a> </td>
                             </tr>";
         
                         }

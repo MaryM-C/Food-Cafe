@@ -1,4 +1,6 @@
-<?php include('partials-front/menu.php');?>
+<?php include('partials-front/menu.php');
+    $id=$_SESSION['id'];
+?>
 <?php 
     // Check whether food id is set or not
     if(isset($_GET['food_id'])) {
@@ -19,7 +21,7 @@
             $image_name = $row['image_name'];
         } else {
             header('location:'.SITEURL);
-        }
+        } 
 
     } else {
         header('location:'.SITEURL);
@@ -108,6 +110,7 @@
                             total = $total,
                             order_date = '$order_date',
                             status = '$status',
+                            cust_id='$id',
                             customer_name = '$customer_name',
                             customer_number = '$customer_contact',
                             customer_address = '$customer_address'

@@ -1,8 +1,3 @@
-<?php 
-include_once "config/db_connect.php";
-include('config/constants.php');
-if (isset($_SESSION['id']) && isset($_SESSION['fname'])){
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,8 +48,4 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])){
     </section>
     <!-- Navbar Section Ends Here -->
 
-    <?php }
-
-else {
-	header("Location: login.php");
-	exit;} ?>
+    

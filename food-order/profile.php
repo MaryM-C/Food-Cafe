@@ -18,10 +18,7 @@ if($user->rowCount() == 1){
   $id=$row['id'];
 }
 
-
-
-
-if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {?>
+?>
 <!DOCTYPE html lang="en">
 <html>
 <head>
@@ -150,8 +147,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])) {?>
 </body>
 </html>
 
-<?php }
+<?php 
 
-else {
-	header("Location: login.php");
-	exit;} ?>
+?>

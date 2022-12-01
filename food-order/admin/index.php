@@ -54,7 +54,7 @@
             
             <!--Sales Chart-->
             <div> 
-                <!--Buttons-->
+                <!--Buttons for Specifying Time Range-->
                 <form method="POST">
                     <button type="submit" name="daily">Daily</button>
                     <button type="submit" name="monthly">Monthly</button>

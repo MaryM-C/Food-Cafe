@@ -1,3 +1,4 @@
+<!--CRUD OPERATIONS NEEDED TO MANAGE FOOD ITEMS-->
 <?php include('partials/menu.php'); ?>
 
        <!-- Menu Section Ends -->

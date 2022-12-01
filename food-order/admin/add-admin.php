@@ -1,3 +1,4 @@
+<!--FOR ADDING A NEW ADMIN ACCOUNT-->
 <?php include('partials/menu.php'); ?>
 
        <!--Main Content Section Starts-->

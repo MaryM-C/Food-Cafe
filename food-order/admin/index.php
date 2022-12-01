@@ -70,11 +70,14 @@
                 <!--Chart.js-->
                 <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+                <!-- PHP SCRIPT TO CHANGE THE Time range depending on pressed button -->
                 <?php 
+                    #Daily
                     $sql5 = "SELECT order_date as timePeriod, total as total FROM tbl_order WHERE status = 'Delivered' ORDER BY order_date ASC";
+                    # Monthly
                     if (isset($_POST['monthly'])) {
                         $sql5 = "SELECT CONCAT(MONTHNAME(order_date), ' ', YEAR(order_date)) as timePeriod,  SUM(total) as total FROM tbl_order WHERE status = 'Delivered'   GROUP BY YEAR(order_date), MONTHNAME(order_date) ORDER BY MONTH(order_date) ASC";
-                         
+                    # Chart to display yearly     
                     } else if (isset($_POST['yearly'])) {
                         $sql5 = "SELECT YEAR(order_date) as timePeriod, SUM(total) as total FROM tbl_order  WHERE status = 'Delivered' GROUP BY timePeriod ORDER BY YEAR(order_date)";
                     }

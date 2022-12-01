@@ -65,6 +65,12 @@ a:hover{
     cursor: pointer;
     text-transform: uppercase;
 }
+.btn-danger{
+    background-color: #f80000;
+    color: white;
+    cursor: pointer;
+    text-transform: uppercase;
+}
 .btn-primary:hover{
     color: white;
     background-color: #e1a100;
@@ -279,3 +285,4 @@ input[type="text"], input[type="tel"], textarea {
         width: 100%;
     }
 }
+

@@ -5,8 +5,6 @@ $sql = "SELECT * FROM tbl_user WHERE id = ?";
 $user= $conn->prepare($sql);
 $id=$_SESSION['id'];
 $user->execute([$id]);
- 
-
 
 if($user->rowCount() == 1){
    

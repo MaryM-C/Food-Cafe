@@ -4,8 +4,8 @@
        <!-- Main Content Section Starts -->
        <div class="main-content">
             <div class=wrapper> 
-            <h1>DASHBOARD</h1> 
-            <br><br>
+                <h1>DASHBOARD</h1> 
+                <br><br>
 
                 <div class="col-4 text-center">
                     <?php 
@@ -51,8 +51,66 @@
                 </div>
                 
                 <div class="clearfix"></div>
+            
+            <!--Sales Chart-->
+            <div> 
+                <form method="POST">
+                    <button type="submit" name="daily">Daily</button>
+                    <button type="submit" name="monthly">Monthly</button>
+                    <button type="submit" name="yearly">Yearly</button>
+
+                </form>
+                
+            </div>
+            <div>
+                <canvas id="salesChart"></canvas>
             </div>
             
-       </div>
+                <!--Chart.js-->
+                <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+                <?php 
+                    $sql5 = "SELECT order_date as timePeriod, total as total FROM tbl_order ORDER BY order_date ASC";
+                    if (isset($_POST['monthly'])) {
+                        $sql5 = "SELECT MONTHNAME(order_date) as timePeriod,  SUM(total) as total FROM tbl_order GROUP BY timePeriod ORDER BY MONTH(order_date)";
+                         
+                    } else if (isset($_POST['yearly'])) {
+                        $sql5 = "SELECT YEAR(order_date) as timePeriod, SUM(total) as total FROM tbl_order GROUP BY timePeriod ORDER BY YEAR(order_date)";
+                    }
+                    $res5 = mysqli_query($conn, $sql5);
+
+                        foreach($res5 as $data) {              
+                            $amount[] = $data['total'];
+                            $time[] = $data['timePeriod'];
+                        }
+                ?>
+                
+                <script>
+
+                    const labels = <?php echo json_encode($time);?>;
+                    const data = {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total Sales',
+                        data: <?php echo json_encode($amount);?>,
+                        fill: false,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.4,
+                    }
+                    ]
+                    
+                    };
+                    const config = {
+                    type: 'line',
+                    data: data,
+                
+                    };
+
+                    var salesChart = new Chart(document.getElementById('salesChart'), config);
+                </script>
+            <!--Sales Chart Ends Here-->
+            
+            </div>
+            <!--Main Content Ends Here-->
 
 <?php include('partials/footer.php'); ?>

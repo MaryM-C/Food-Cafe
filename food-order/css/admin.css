@@ -134,7 +134,7 @@ table tr td {
 /*CSS for Main Content*/ 
 .main-content {
     margin: 1% 0;
-    background-color: #d9d9d9;
+    background-color: #f2f2f2;
     padding: 3% 0;
 }
 .col-4 {
@@ -143,6 +143,7 @@ table tr td {
     margin: 1%;
     padding: 2%;
     float: left;
+    box-shadow: 2px 2px 4px gray;
 }
 
 

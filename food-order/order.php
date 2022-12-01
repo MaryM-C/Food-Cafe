@@ -32,7 +32,7 @@
     <section class="food-search">
         <div class="container">
             
-            <h2 class="text-center text-yellow">Your Cart</h2>
+            <h2 class="text-center text-yellow">Customize Order</h2>
 
             <form action="" method="POST" class="order">
                 <fieldset>
@@ -65,7 +65,9 @@
                         <div class="food-detail2"><h4>Quantity</h4></div> <br>
                         <input type="number" name="qty" class="input-responsive" value="1" required>
 
-                        <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
+                        
+                        <input type="submit" name="submit" value="Confirm Order" class="btn1 btn-primary">
+                        
                         
                     </div>
 

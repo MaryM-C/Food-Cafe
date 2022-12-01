@@ -62,7 +62,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])){ ?>
                 </tbody>
                 </table> 
                 <a class="btn btn-primary"  href="#" role="button">Place Order</a>
-                <a class="btn btn-danger" href="#" role="button">Cancel Order</a>
+
+               
         </div>
 
 <?php }

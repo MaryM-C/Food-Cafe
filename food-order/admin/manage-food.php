@@ -1,7 +1,7 @@
 <!--CRUD OPERATIONS NEEDED TO MANAGE FOOD ITEMS-->
 <?php include('partials/menu.php'); ?>
 
-       <!-- Menu Section Ends -->
+      
             <!-- Main Content Section Starts -->
             <div class="main-content">
             <div class=wrapper> 

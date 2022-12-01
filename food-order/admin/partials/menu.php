@@ -3,7 +3,7 @@ include('../config/constants.php');
 include('login-check.php');
 ?>
 
-<html>
+<!DOCTYPE html>
     <head>
         <title>PNC Cafe | Admin </title>
     </head>

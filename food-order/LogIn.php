@@ -23,7 +23,7 @@
 				<?php } ?>
 
 			<div class="mb-3">
-				<label class="form-label text-warning">User name</label>
+				<label class="form-label text-warning">Username</label>
 				<input type="text" 
 					class="form-control"
 					name="uname"

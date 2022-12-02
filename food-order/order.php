@@ -64,9 +64,8 @@
 
                         <div class="food-detail2"><h4>Quantity</h4></div> <br>
                         <input type="number" name="qty" class="input-responsive" value="1" required>
-
                         
-                        <input type="submit" name="submit" value="Confirm Order" class="btn1 btn-primary">
+                        <input type="submit" name="submit" value="Add to cart" class="btn btn-primary">
                         
                         
                     </div>

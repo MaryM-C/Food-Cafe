@@ -58,6 +58,7 @@ a:hover{
     border: none;
     font-size: 1rem;
     border-radius: 5px;
+    margin-top: 5px;
 }
 .btn-primary{
     background-color: #FDB600;
@@ -71,13 +72,9 @@ a:hover{
     background-color: #e1a100;
 }
 
-.btn1{
-    padding: 2%;
-    border: none;
-    font-size: 2rem;
-    border-radius: 5px;
-    margin-top: 5px;
-}
+
+
+
 
 h2{
     color: #FDB600;

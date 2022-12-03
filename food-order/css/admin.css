@@ -145,6 +145,31 @@ table tr td {
     float: left;
     box-shadow: 2px 2px 4px gray;
 }
+.chart {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    list-style-type: none;
+}
+
+.box-A {
+    flex: 0 0 100%;
+    width: 50%;
+
+}
+.box-B, .box-C {
+    flex: 0 0 50%;
+    width: 50%;
+}
+
+
+.col-1 {
+    height:40%;
+    
+}
+
+
+/*CSS for Chart*/ 
 
 
 /*CSS for Footer*/

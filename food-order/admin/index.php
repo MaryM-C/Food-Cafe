@@ -7,6 +7,49 @@
                 <h1>DASHBOARD</h1> 
                 <br><br>
 
+                <ul class="chart">
+                    <li class ="box-A"><canvas id="salesChart"></canvas></li>
+                    <li class = "box-B">
+                        <div class="col-4 col-1 text-center">
+                            Top 5 Sold Items
+                            <?php 
+                                $sql4 = "SELECT SUM(total) AS Total from tbl_order WHERE status = 'Delivered'";
+                                $res4 = mysqli_query($conn, $sql4);
+                                $row4 = mysqli_fetch_assoc($res4);
+                                $total_revenue = $row4['Total'];
+                            ?>
+                            <h1>₱ <?php echo $total_revenue; ?></h1> 
+                            <br>
+                            
+                            
+                        </div>
+                    </li>
+                    <li class = "box-C">
+                        <div class="col-4 col-1 text-center">
+                            Top 5 Sold Items
+                            <?php 
+                                $sql4 = "SELECT SUM(total) AS Total from tbl_order WHERE status = 'Delivered'";
+                                $res4 = mysqli_query($conn, $sql4);
+                                $row4 = mysqli_fetch_assoc($res4);
+                                $total_revenue = $row4['Total'];
+                            ?>
+                            <h1>₱ <?php echo $total_revenue; ?></h1> 
+                            <br>
+                            
+                            
+                        </div>
+                    </li>
+                
+                
+                </ul>
+                
+                
+                
+               
+                
+            </div>
+            
+
                 <div class="col-4 text-center">
                     <?php 
                         $sql = "SELECT * from tbl_category";
@@ -63,12 +106,12 @@
                 </form>
                 
             </div>
-            <div>
-                <canvas id="salesChart"></canvas>
-            </div>
+            
+            
             
                 <!--Chart.js-->
                 <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
+                <script src = "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
 
                 <!-- PHP SCRIPT TO CHANGE THE Time range depending on pressed button -->
                 <?php 
@@ -90,6 +133,7 @@
                 ?>
                 
                 <script>
+                    
 
                     const labels = <?php echo json_encode($time);?>;
                     const data = {
@@ -97,8 +141,9 @@
                     datasets: [{
                         label: 'Total Sales',
                         data: <?php echo json_encode($amount);?>,
-                        fill: false,
-                        borderColor: 'rgb(75, 192, 192)',
+                        fill: true,
+                        borderColor: 'rgb(23, 74,65)',
+                        borderWidth: 3,
                         tension: 0.4,
                     }
                     ]
@@ -107,9 +152,58 @@
                     const config = {
                     type: 'line',
                     data: data,
+                    options: {
+                        
+                        responsive: true,
+                        
+                        scales: {
+                            y: {
+                                ticks: {
+                                    font: {
+                                    size: 16,
+                                    },
+                                callback: function(value, index, ticks) {
+                                    return '₱ ' + value;
+                                }
+                                }
+                        },
+                        x: {
+                                ticks: {
+                                    font: {
+                                    size: 16,
+                                    },
+                                }
+                        },
+                    },
+                        plugins: {
+                            title: {
+                                display: true,
+                                weight: 'bold',
+                                position: 'top',
+                                align: 'start',
+                                text: 'Sales Summary',
+                                font: {
+                                    size: 25,
+                                },
+                                padding: {
+                                    top: 10,
+                                    bottom: 30
+                                }
+                            },
+                            datalabels: {
+                                anchor: 'end',
+                                align : 'top',
+                                formatter: Math.round,
+                                font: {
+                                    weight: 'bold',
+                                    size: 14
+                                }
+                            }
+                        }
+                    }
                 
                     };
-
+                    Chart.register(ChartDataLabels);
                     var salesChart = new Chart(document.getElementById('salesChart'), config);
                 </script>
             <!--Sales Chart Ends Here-->

@@ -50,7 +50,7 @@
                          <th>Actions</th>
                     </tr>
                     <?php 
-                         $sql ="SELECT  * FROM tbl_category";
+                         $sql ="SELECT  * FROM tbl_category ORDER BY title ASC ";
                          $res=mysqli_query($conn, $sql);
 
                          $count=mysqli_num_rows($res);
@@ -85,7 +85,7 @@
                                         <td><?php echo $active; ?></td>
                                         <td>
                                              <a href="<?php echo SITEURL;?>admin/update-category.php?id=<?php echo $id; ?>" class="btn-primary">Update Category</a>
-                                             <a href="<?php echo SITEURL; ?>/admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name;?>" class="btn-danger">Delete Category</a>
+                                             <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name;?>" class="btn-danger">Delete Category</a>
                                         </td>
                                    </tr> 
                     <?php

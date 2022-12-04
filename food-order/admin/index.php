@@ -11,30 +11,47 @@
                     <li class ="box-A"><canvas id="salesChart"></canvas></li>
                     <li class = "box-B">
                         <div class="col-4 col-1 text-center">
-                            Top 5 Sold Items
+                        Gross Revenue
+                            <br>
                             <?php 
-                                $sql4 = "SELECT SUM(total) AS Total from tbl_order WHERE status = 'Delivered'";
-                                $res4 = mysqli_query($conn, $sql4);
-                                $row4 = mysqli_fetch_assoc($res4);
-                                $total_revenue = $row4['Total'];
+                                $sql2 = "SELECT SUM(total) AS Total from tbl_order WHERE status = 'Delivered'";
+                                $res2 = mysqli_query($conn, $sql2);
+                                $row2 = mysqli_fetch_assoc($res2);
+                                $total_revenue = $row2['Total'];
                             ?>
                             <h1>₱ <?php echo $total_revenue; ?></h1> 
+                            
                             <br>
                             
                             
                         </div>
-                    </li>
+                    </li> 
+                    <br><br>
                     <li class = "box-C">
                         <div class="col-4 col-1 text-center">
-                            Top 5 Sold Items
-                            <?php 
-                                $sql4 = "SELECT SUM(total) AS Total from tbl_order WHERE status = 'Delivered'";
-                                $res4 = mysqli_query($conn, $sql4);
-                                $row4 = mysqli_fetch_assoc($res4);
-                                $total_revenue = $row4['Total'];
-                            ?>
-                            <h1>₱ <?php echo $total_revenue; ?></h1> 
+                            <p>Top 5 Sold Items</p>
                             <br>
+                            <?php
+                                $sql3 = "SELECT food as Food from tbl_order where status = 'Delivered' group by food order by sum(qty) DESC LIMIT 5 ";
+                                $res3 = mysqli_query($conn, $sql3);
+
+                                if ($res3) {
+                                    $row3 = mysqli_num_rows($res3); 
+                                    $sn =1;
+
+                                    if ($row3>0) {
+                                        while ($row3=mysqli_fetch_assoc($res3)) {
+                                            $food = $row3['Food'];
+                                            ?> 
+                                            <h2><?php echo $sn++.". ".$food; ?> </p> <h2>
+
+                                            <?php
+                                        }
+                                    }
+                                }
+                                
+                            ?>
+                            
                             
                             
                         </div>
@@ -49,49 +66,6 @@
                 
             </div>
             
-
-                <div class="col-4 text-center">
-                    <?php 
-                        $sql = "SELECT * from tbl_category";
-                        $res = mysqli_query($conn, $sql);
-                        $count = mysqli_num_rows($res);
-
-                    ?>
-                    <h1><?php echo $count;?></h1> 
-                    <br>
-                    Categories
-                </div>
-                <div class="col-4 text-center">
-                    <?php 
-                        $sql2 ="SELECT * FROM tbl_food";
-                        $res2 = mysqli_query($conn, $sql2);
-                        $count2 = mysqli_num_rows($res2);
-                    ?>
-                    <h1><?php echo $count2;?></h1>
-                    <br>
-                    Foods
-                </div>
-                <div class="col-4 text-center">
-                <?php 
-                        $sql3 ="SELECT * FROM tbl_order";
-                        $res3 = mysqli_query($conn, $sql3);
-                        $count3 = mysqli_num_rows($res3);
-                    ?>
-                    <h1><?php echo $count3;?></h1> 
-                    <br>
-                    Total Orders
-                </div>
-                <div class="col-4 text-center">
-                    <?php 
-                        $sql4 = "SELECT SUM(total) AS Total from tbl_order WHERE status = 'Delivered'";
-                        $res4 = mysqli_query($conn, $sql4);
-                        $row4 = mysqli_fetch_assoc($res4);
-                        $total_revenue = $row4['Total'];
-                    ?>
-                    <h1>₱ <?php echo $total_revenue; ?></h1> 
-                    <br>
-                    Revenue Generated
-                </div>
                 
                 <div class="clearfix"></div>
             

@@ -144,30 +144,48 @@ table tr td {
     padding: 2%;
     float: left;
     box-shadow: 2px 2px 4px gray;
+    
 }
 .chart {
     display: flex;
     flex-direction: column;
+    align-content: center;
     flex-wrap: wrap;
+    height: 500px;
     list-style-type: none;
 }
 
 .box-A {
     flex: 0 0 100%;
-    width: 50%;
+    width: 80%;
+    
 
 }
-.box-B, .box-C {
-    flex: 0 0 50%;
-    width: 50%;
-}
 
-
-.col-1 {
-    height:40%;
+.box-C {
+    order: 2;
+    text-align: justify;
+    justify-items: center;
+   
     
 }
 
+.box-B, .box-C {
+    flex: 0 0 50%;
+    width: 30%;
+    
+}
+
+.col-1 {
+    height:90%;
+    width: 90%;
+    margin-bottom: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+    
+}
 
 /*CSS for Chart*/ 
 

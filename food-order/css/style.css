@@ -58,6 +58,7 @@ a:hover{
     border: none;
     font-size: 1rem;
     border-radius: 5px;
+    margin-top: 5px;
 }
 .btn-primary{
     background-color: #FDB600;
@@ -65,10 +66,16 @@ a:hover{
     cursor: pointer;
     text-transform: uppercase;
 }
+
 .btn-primary:hover{
     color: white;
     background-color: #e1a100;
 }
+
+
+
+
+
 h2{
     color: #FDB600;
     font-size: 2rem;
@@ -279,3 +286,4 @@ input[type="text"], input[type="tel"], textarea {
         width: 100%;
     }
 }
+

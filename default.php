@@ -8,3 +8,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])){
 else {
 	header("Location: login.php");
 	exit;} ?>
+
+th class='text-white'><?php echo $row['food']?></th>
+                                <td class='text-white'><?php echo $row['price']?></td>
+                                <td class='text-white'><?php echo $row['qty']?></td>
+

@@ -32,7 +32,7 @@
     <section class="food-search">
         <div class="container">
             
-            <h2 class="text-center text-yellow">Your Cart</h2>
+            <h2 class="text-center text-yellow">Customize Order</h2>
 
             <form action="" method="POST" class="order">
                 <fieldset>
@@ -65,24 +65,14 @@
                         <div class="food-detail2"><h4>Quantity</h4></div> <br>
                         <input type="number" name="qty" class="input-responsive" value="1" required>
                         
+                        <input type="submit" name="submit" value="Add to cart" class="btn btn-primary">
+                        
+                        
                     </div>
 
                 </fieldset>
                 
-                <fieldset>
-                    <legend><h3>Delivery Details</h3></legend>
-                    <div class="food-detail2"><h4>Full Name</h4></div>
-                    <input type="text" name="full-name" placeholder="Name" class="input-responsive" required>
-
-                    <div class="food-detail2"><h4>Phone Number</h4></div>
-                    <input type="tel" name="contact" placeholder="Ex. 09843xxxxxx" class="input-responsive" required>
-
-                    <div class="food-detail2"><h4>Address</h4></div>
-                    <textarea name="address" rows="10" placeholder="E.g. Room Number/Office, Building" class="input-responsive" required></textarea>
-
-                    <input type="submit" name="submit" value="Confirm Order" class="btn btn-primary">
-                </fieldset>
-
+               
             </form>
             <?php 
                 //check whether the submit button is clicked or not
@@ -94,7 +84,7 @@
 
                     $total = $price * $qty; // total amount
                     $order_date = date("Y-m-d"); //Order date
-                    $status = "Ordered";
+                    $status = "In cart";
                     $customer_name = $_POST['full-name'];
                     $customer_contact = $_POST['contact'];
                     $customer_address = $_POST['address'];

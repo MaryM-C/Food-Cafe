@@ -5,7 +5,7 @@ $sql = "SELECT * FROM tbl_user WHERE id = ?";
 $user= $conn->prepare($sql);
 $id=$_SESSION['id'];
 $user->execute([$id]);
-
+ 
 if($user->rowCount() == 1){
    
   $row=$user->fetch();
@@ -16,7 +16,7 @@ if($user->rowCount() == 1){
   $id=$row['id'];
 }
 
-?>
+if (isset($_SESSION['id']) && isset($_SESSION['fname'])){?>
 <!DOCTYPE html lang="en">
 <html>
 <head>
@@ -145,6 +145,9 @@ if($user->rowCount() == 1){
 </body>
 </html>
 
-<?php 
+<?php }
 
+else {
+	header("Location: login.php");
+	exit;} 
 ?>

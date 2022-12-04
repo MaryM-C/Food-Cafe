@@ -10,6 +10,7 @@
 
     <!-- Link our CSS file -->
     <link rel="stylesheet" href="css/style.css">
+    
 </head>
  
 <body>

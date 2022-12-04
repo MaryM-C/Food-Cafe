@@ -1,68 +1,107 @@
-<?php include('partials-front/menu.php');?>
 <?php 
-    // Check whether food id is set or not
-    if(isset($_GET['food_id'])) {
-        // get the food id and details of the selected food
-        $food_id = $_GET['food_id'];
+session_start();
+include_once "config/db_connect.php";
+$id=$_SESSION['id'];
+$sql = "SELECT * FROM `tbl_order` WHERE cust_id = ? AND status='In Cart'";
+$result=$conn->prepare($sql);
+$result->execute([$id]); 
 
-        //get the details of the selected food
-        $sql = "SELECT * FROM tbl_food WHERE id=$food_id";
-        $res = mysqli_query($conn, $sql);
-        $count = mysqli_num_rows($res);
-
-        // check whether the data is available or not
-        if($count ==1) {
-            $row = mysqli_fetch_assoc($res);
-
-            $title = $row['title'];
-            $price = $row['price'];
-            $image_name = $row['image_name'];
-        } else {
-            header('location:'.SITEURL);
-        }
-
-    } else {
-        header('location:'.SITEURL);
-    }
 ?>
 
-    <!-- fOOD sEARCH Section Starts Here -->
-    <section class="food-search">
-        <div class="container">
+<!DOCTYPE html lang="en">
+<html>
+<head>
+ 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-            <h2 class="text-center text-yellow">Your Cart</h2>
+	<title>Cart</title>
+    <!-- Styling-->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+<div class="modal fade" id="placeOrder" tabindex="-1" role="dialog" aria-labelledby="placeOrderLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="placeOrderLabel">Place Order</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
 
-            <form action="" method="POST" class="order">
-                <fieldset>
-                    <legend><h3>Selected Food</h3></legend>
+        <form method="post" action="cart.php">
+        <?php if (isset($_POST['submit'])) {
+                    $sql = "UPDATE tbl_order SET status = 'Ordered' WHERE cust_id = $id";
+                    $result=$conn->query($sql);
+                    
+                    if(isset($_GET['tblNumber'])){
+                        $tblnumb = $_POST['tblNumber'];
+                        $sql = "UPDATE tbl_order SET tblNo = $tblnumb WHERE cust_id = $id";
+                        $result=$conn->query($sql);
+                    }
+                    header("Location: cart.php");}?>
 
-                    <div class="food-menu-img">
-                        <?php 
+                <Label class="h5">Table Number:</Label>
+                <input type="number" name="tblNumber" id="tblNumbers">
+    
+                <input type="submit" name="submit" value="Proceed" class="btn btn-primary p-3 "> 
+                <button type="button" class="btn btn-secondary p-3" data-dismiss="modal">CLOSE</button>
+                
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>
 
-                            //check whether the image is available or not
-                            if($image_name =="") {
-                                //image not available 
-                                echo "<div class = 'error'>Image not available.</div>";
-                            } else {
-                                //image available 
-                                ?>
-                                    <img src="<?php echo SITEURL;?>images/food/<?php echo $image_name;?>" alt="<?php echo $title; ?>" class="img-responsive img-curve">
-                                <?php 
+<div class="container-xl px-4 mt-4">
+    <!-- Account page navigation-->
+    <nav class="nav nav-borders">
+        <a class="nav-link active ms-0 text-warning" href="index.php">Back to Home</a>
+    </nav>
+    <!-- Cart Table-->
+        <div class="table-responsive-sm">
+                    <table class="table">
+                    <thead class="thead-warning">
+                    <tr class="table-warning">
+                    <th scope="col" >Food</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Operation</th>
 
-                            }
-                        ?>
-
-                    </div>
-
-                    <div class="food-menu-desc">
-                        <h2><?php echo $title;?></h2>
-                        <input type = "hidden" name = "food" value = "<?php echo $title;?>">
-                        <p class="food-price2">₱ <?php echo $price;?></p>
-                        <input type = "hidden" name="price" value="<?php echo $price;?>"> <br>
-
-                        <div class="food-detail2"><h4>Quantity</h4></div> <br>
-                        <input type="number" name="qty" class="input-responsive" value="1" required>
-
-                    </div>
-
-                </fieldset>
+                    </tr>
+                    </thead>
+                <tbody>
+                <p class="text-left h1 text-warning">MY CART</p>
+                    <?php
+                    while ($row = $result->fetch()) {
+                        $food = $row['food']; 
+                        $price = $row['price']; 
+                        $qty = $row['qty'];
+                        $order_id = $row['order_id'];
+                    ?>
+                     <tr>
+                                <th class='text-white'><?php echo $food ?></th>
+                                <td class='text-white'><?php echo $price ?></td>
+                                <td class='text-white'><?php echo $qty ?></td>
+                                <td>
+                                    <a class='btn btn-primary' href="config\delete.php?order_id=<?php echo $row['order_id']?>" role='button'>remove</a>
+                                </td>
+                    <?php }?>
+                        
+                </tbody>
+                </table> 
+                <a class="btn btn-primary bt1 mb-2" data-toggle="modal" data-target="#placeOrder" role="button" >Place Order</a>
+                
+                
+        </div>
+<!--Modal-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

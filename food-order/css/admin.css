@@ -144,8 +144,11 @@ table tr td {
     padding: 2%;
     float: left;
     box-shadow: 2px 2px 4px gray;
-    
+
 }
+
+/*CSS for Chart*/ 
+
 .chart {
     display: flex;
     flex-direction: column;
@@ -167,7 +170,6 @@ table tr td {
     text-align: justify;
     justify-items: center;
    
-    
 }
 
 .box-B, .box-C {
@@ -186,9 +188,6 @@ table tr td {
     align-items: stretch;
     
 }
-
-/*CSS for Chart*/ 
-
 
 /*CSS for Footer*/
 .footer {

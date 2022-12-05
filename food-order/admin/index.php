@@ -8,25 +8,25 @@
                 <br><br>
 
                 <ul class="chart">
+                    <!-- Chart and its data-->
                     <li class ="box-A"><canvas id="salesChart"></canvas></li>
                     <li class = "box-B">
                         <div class="col-4 col-1 text-center">
-                        Gross Revenue
+                        Total Sales
                             <br>
-                            <?php 
-                                $sql2 = "SELECT SUM(total) AS Total from tbl_order WHERE status = 'Delivered'";
-                                $res2 = mysqli_query($conn, $sql2);
-                                $row2 = mysqli_fetch_assoc($res2);
-                                $total_revenue = $row2['Total'];
-                            ?>
-                            <h1>₱ <?php echo $total_revenue; ?></h1> 
-                            
+                                <?php 
+                                    $sql2 = "SELECT SUM(total) AS Total from tbl_order WHERE status = 'Delivered'";
+                                    $res2 = mysqli_query($conn, $sql2);
+                                    $row2 = mysqli_fetch_assoc($res2);
+                                    $total_revenue = $row2['Total'];
+                                ?>
+                                <h1>₱ <?php echo $total_revenue; ?></h1> 
                             <br>
-                            
-                            
+ 
                         </div>
                     </li> 
-                    <br><br>
+                    <br>
+                    <br>
                     <li class = "box-C">
                         <div class="col-4 col-1 text-center">
                             <p>Top 5 Sold Items</p>
@@ -50,26 +50,17 @@
                                     }
                                 }
                                 
-                            ?>
-                            
-                            
+                            ?> 
                             
                         </div>
                     </li>
-                
-                
-                </ul>
-                
-                
-                
-               
-                
+                </ul>    
             </div>
             
                 
                 <div class="clearfix"></div>
             
-            <!--Sales Chart-->
+            
             <div> 
                 <!--Buttons for Specifying Time Range-->
                 <form method="POST">
@@ -81,8 +72,7 @@
                 
             </div>
             
-            
-            
+ 
                 <!--Chart.js-->
                 <script src = "https://cdn.jsdelivr.net/npm/chart.js"></script>
                 <script src = "https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0/dist/chartjs-plugin-datalabels.min.js"></script>
@@ -107,8 +97,6 @@
                 ?>
                 
                 <script>
-                    
-
                     const labels = <?php echo json_encode($time);?>;
                     const data = {
                     labels: labels,

@@ -101,7 +101,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])){?>
                     <!-- Profile picture help block-->
                     <div class="small font-italic text-muted mb-4">JPG or PNG no larger than 5 MB</div>
                     <!-- Profile picture upload button-->
-                    <button class="btn btn-primary p-6" type="button">Upload new image</button>
+                    <button class="btn btn-primary p-6" type="button">Change Profile Image</button>
                 </div>
             </div>
         </div>

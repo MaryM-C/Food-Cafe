@@ -4,7 +4,8 @@
         <title>PNC Cafe | Admin Login</title>
         <link rel="stylesheet" href="../css/admin.css">
     </head>
-    <body>
+    <body class = "background">
+        
         <div class="login">
             <h1 class="text-center">Login</h1>
             <br><br>
@@ -21,13 +22,22 @@
             ?>
             <br><br>
             <!--Login Form Starts Here-->
-            <form action="" method="POST" class="text-left-align">
-                Username <br>
-                <input type="text" name="username" placeholder="Enter Username"><br><br>
-                Password <br>
-                <input type="password" name="password" placeholder="Enter Password"><br><br>
+            <form action="" method="POST">
+                <br>
+                <div>
+                    <input type="text" name="username" required><br><br>
+                    <label for ="username">Username</label> 
+                </div>
                 
-                <input type="submit" name="submit" value="Login" class="btn-primary-30">
+                <div>
+                    <input type="password" name="password" required><br><br>
+                    <label for="password">Password</label> 
+                </div>
+                
+                <div class = "align-center"> 
+                <b><input type="submit" name="submit" value="LOG IN" class="btn-primary align-center"></b>
+                </div>
+                
             </form>
             <!--Login Form Ends Here-->
         </div>

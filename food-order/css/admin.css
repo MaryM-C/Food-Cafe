@@ -16,6 +16,11 @@
     text-align: center;
 }
 
+.text-left {
+    text-align: left;
+    margin-top: 5px;
+}
+
 .text-left-align {
     padding: 2%;
     margin: 2% auto;
@@ -43,7 +48,7 @@ table tr th {
 
 table tr td {
     padding: 1%;
-    margin-right: 2% auto;
+    margin-right: 3% auto;
 
 }
 
@@ -65,6 +70,7 @@ table tr td {
     text-decoration: none;
     font-weight: bold;
     width: 30%;
+    text-align: center;
     
 }
 
@@ -98,6 +104,11 @@ table tr td {
 
 .btn-danger:hover {
     background-color: #ff4757;
+}
+
+.icon {
+    padding: 12px 16px;
+    font-size: 20px;
 }
 
 .success{
@@ -144,8 +155,76 @@ table tr td {
     padding: 2%;
     float: left;
     box-shadow: 2px 2px 4px gray;
+
 }
 
+/*CSS for Chart*/ 
+
+.chart {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    flex-wrap: wrap;
+    height: 500px;
+    list-style-type: none;
+}
+
+.box-A {
+    flex: 0 0 100%;
+    width: 70%;
+
+}
+
+.flex-container {
+    display: flex;
+    width: 30%;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    align-items: normal;
+    align-content: stretch;
+}
+
+.flex-items:nth-child(1) {
+    height: 150px;
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+  }
+  
+  .flex-items:nth-child(2) {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+  }
+  
+  .flex-items:nth-child(3) {
+    display: block;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    align-self: auto;
+    order: 0;
+  }  
+
+.col-1 {
+    height:80%;
+    width: 80%;
+    margin-bottom: auto;
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: stretch;
+    
+    
+}
 
 /*CSS for Footer*/
 .footer {

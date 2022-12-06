@@ -12,14 +12,17 @@
                unset($_SESSION['update_order']);
             }
             ?>
-            
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
             <br>
                 <form action="" method="GET">
-                    <label>From Date:</label>
+                    From Date:
                     <input type="date" name="from_date" value="<?php if(isset($_GET['from_date'])) { echo $_GET['from_date'];}?>">
-                    <label>To Date:</label>
+                    To Date:
                     <input type="date" name="to_date"  value="<?php if(isset($_GET['to_date'])) { echo $_GET['to_date'];}?>">
-                    <input type="submit" name="submit" value="Filter" class="btn-secondary">
+                    <div>
+                    <input type="submit" name="submit" value="Filter" class="btn-secondary width-80">
+                    </div>
                 </form>
                <table class="tbl-full">
                     <tr>
@@ -98,7 +101,7 @@
                                         <td><?php echo $customer_address;?></td>
 
                                         <td>
-                                        <a href="<?php echo SITEURL;?>admin/update-order.php?id=<?php echo $id;?>" class="btn-primary">Update Order</a>
+                                        <a href="<?php echo SITEURL;?>admin/update-order.php?id=<?php echo $id;?>" class="btn-primary icon"><i class = "fa fa-pencil"></i></a>
                                         </td>
                                         <?php
                                    }
@@ -107,7 +110,7 @@
                                    echo "<tr><td colspan='11' class = 'error'>There are no orders.</td></tr>";
                               }
                          ?>
-                    </tr>
+                    </tr> 
                    
                </table>
           </div>

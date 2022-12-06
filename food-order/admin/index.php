@@ -9,9 +9,9 @@
                 <div> 
                 <!--Buttons for Specifying Time Range-->
                     <form method="POST">
-                        <button type="submit" name="daily">Daily</button>
-                        <button type="submit" name="monthly">Monthly</button>
-                        <button type="submit" name="yearly">Yearly</button>
+                        <button type="submit" name="daily" class="btn-primary-30">Daily</button>
+                        <button type="submit" name="monthly"class="btn-primary-30">Monthly</button>
+                        <button type="submit" name="yearly"class="btn-primary-30">Yearly</button>
 
                     </form>
                 </div>
@@ -23,7 +23,7 @@
                         <li class = "flex-items">
                             <div class="col-4 col-1 text-center">
                             Total Sales of the Month
-                                <br>
+                                
                                     <?php 
                                         // Displays the Total Sales for the current month of the current year
                                         $sql2 ="SELECT SUM(total) as Total 
@@ -39,13 +39,13 @@
                                         $row2 = mysqli_fetch_assoc($res2);
                                         $total_revenue = $row2['Total'];
                                     ?>
-                                    <h2>₱ <?php echo $total_revenue; ?></h2> 
+                                    <h1>₱ <?php echo $total_revenue; ?></h1> 
                             </div>
                         </li> 
-                        <li class = "flex-item">
+                        <li class = "flex-items">
                             <div class="col-4 col-1 text-center">
                                 Total of the Year
-                                <br>
+                                
                                 <?php 
                                         // Displays the Total Sales for the current month of the current year
                                         $sql4 ="SELECT SUM(total) as Total 
@@ -60,10 +60,10 @@
                                         $row4 = mysqli_fetch_assoc($res4);
                                         $total_revenue = $row4['Total'];
                                     ?>
-                                    <h2>₱ <?php echo $total_revenue; ?></h2> 
+                                    <h1>₱ <?php echo $total_revenue; ?></h1> 
                             </div>
                         </li>
-                        <li class="flex-item">
+                        <li class="flex-items">
                             <div class="col-4 col-1 text-center">
                                     <h2>Top 5 Sold Items</h2>
                                      

@@ -109,7 +109,6 @@
                 $featured = $_POST['featured'];
                 $active = $_POST['active'];
 
-                
                 //upload image
                 if(isset($_FILES['image']['name'])) {
                   
@@ -167,7 +166,6 @@
                     $_SESSION['add2'] = "<div class='error'>Failed to add '$title'</div>";
                     header('location:'.SITEURL.'admin/manage-food.php');
                 }
-                
                 
             }
         ?>

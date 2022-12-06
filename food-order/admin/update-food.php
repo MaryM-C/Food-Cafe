@@ -55,7 +55,7 @@
                                 echo "<div class='error'>Image not Available.</div>";
                             } else {
                                 ?>
-                                <img src="<?php echo SITEURL;?>/images/food/<?php echo $current_image;?>" width="40%">
+                                <img src="<?php echo SITEURL;?>images/food/<?php echo $current_image;?>" width="40%">
                                 <?php
                             }
                        ?>

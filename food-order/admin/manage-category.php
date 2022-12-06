@@ -38,6 +38,7 @@
         ?>
           <br>
             <!-- Button to Add Category-->
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <a href="<?php echo SITEURL;?>admin/add-category.php" class="btn-primary">Add category</a>
             <br><br><br>
                <table class="tbl-full">
@@ -84,8 +85,8 @@
                                         <td><?php echo $featured; ?></td>
                                         <td><?php echo $active; ?></td>
                                         <td>
-                                             <a href="<?php echo SITEURL;?>admin/update-category.php?id=<?php echo $id; ?>" class="btn-primary">Update Category</a>
-                                             <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name;?>" class="btn-danger">Delete Category</a>
+                                             <a href="<?php echo SITEURL;?>admin/update-category.php?id=<?php echo $id; ?>" class="btn-primary icon"><i class = "fa fa-pencil"></i></a>
+                                             <a href="<?php echo SITEURL; ?>admin/delete-category.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name;?>" class="btn-danger icon"><i class = "fa fa-trash"></i></a>
                                         </td>
                                    </tr> 
                     <?php
@@ -99,10 +100,6 @@
                                    </td>
                                    </tr>
                     <?php    } ?>
-                              
-                    
-                              
-                    
                     
                </table>
      </div>

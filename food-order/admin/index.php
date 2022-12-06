@@ -6,71 +6,102 @@
             <div class=wrapper> 
                 <h1>DASHBOARD</h1> 
                 <br><br>
+                <div> 
+                <!--Buttons for Specifying Time Range-->
+                    <form method="POST">
+                        <button type="submit" name="daily">Daily</button>
+                        <button type="submit" name="monthly">Monthly</button>
+                        <button type="submit" name="yearly">Yearly</button>
+
+                    </form>
+                </div>
 
                 <ul class="chart">
                     <!-- Chart and its data-->
                     <li class ="box-A"><canvas id="salesChart"></canvas></li>
-                    <li class = "box-B">
-                        <div class="col-4 col-1 text-center">
-                        Total Sales
-                            <br>
+                    <div class = "flex-container">
+                        <li class = "flex-items">
+                            <div class="col-4 col-1 text-center">
+                            Total Sales of the Month
+                                <br>
+                                    <?php 
+                                        // Displays the Total Sales for the current month of the current year
+                                        $sql2 ="SELECT SUM(total) as Total 
+                                                FROM `tbl_order` 
+                                                WHERE  (
+                                                    MONTH(order_date) = MONTH(CURRENT_DATE) 
+                                                    AND YEAR(order_date)= YEAR(CURRENT_DATE) 
+                                                    AND status = 'Delivered'
+                                                )
+                                                ";
+                                        
+                                        $res2 = mysqli_query($conn, $sql2);
+                                        $row2 = mysqli_fetch_assoc($res2);
+                                        $total_revenue = $row2['Total'];
+                                    ?>
+                                    <h2>₱ <?php echo $total_revenue; ?></h2> 
+                            </div>
+                        </li> 
+                        <li class = "flex-item">
+                            <div class="col-4 col-1 text-center">
+                                Total of the Year
+                                <br>
                                 <?php 
-                                    $sql2 = "SELECT SUM(total) AS Total from tbl_order WHERE status = 'Delivered'";
-                                    $res2 = mysqli_query($conn, $sql2);
-                                    $row2 = mysqli_fetch_assoc($res2);
-                                    $total_revenue = $row2['Total'];
-                                ?>
-                                <h1>₱ <?php echo $total_revenue; ?></h1> 
-                            <br>
- 
-                        </div>
-                    </li> 
-                    <br>
-                    <br>
-                    <li class = "box-C">
-                        <div class="col-4 col-1 text-center">
-                            <p>Top 5 Sold Items</p>
-                            <br>
-                            <?php
-                                $sql3 = "SELECT food as Food from tbl_order where status = 'Delivered' group by food order by sum(qty) DESC LIMIT 5 ";
-                                $res3 = mysqli_query($conn, $sql3);
+                                        // Displays the Total Sales for the current month of the current year
+                                        $sql4 ="SELECT SUM(total) as Total 
+                                                FROM `tbl_order` 
+                                                WHERE  (
+                                                    YEAR(order_date)= YEAR(CURRENT_DATE) 
+                                                    AND status = 'Delivered'
+                                                )
+                                                ";
+                                        
+                                        $res4 = mysqli_query($conn, $sql4);
+                                        $row4 = mysqli_fetch_assoc($res4);
+                                        $total_revenue = $row4['Total'];
+                                    ?>
+                                    <h2>₱ <?php echo $total_revenue; ?></h2> 
+                            </div>
+                        </li>
+                        <li class="flex-item">
+                            <div class="col-4 col-1 text-center">
+                                    <h2>Top 5 Sold Items</h2>
+                                     
+                                    <?php
+                                    // Displays the Top 5 Food most bought by the customers
+                                        $sql3 = "SELECT food AS Food FROM tbl_order WHERE status = 'Delivered' GROUP BY food order by sum(qty) DESC LIMIT 5 ";
+                                        $res3 = mysqli_query($conn, $sql3);
 
-                                if ($res3) {
-                                    $row3 = mysqli_num_rows($res3); 
-                                    $sn =1;
+                                        if ($res3) {
+                                            $row3 = mysqli_num_rows($res3); 
+                                            $sn =1;
 
-                                    if ($row3>0) {
-                                        while ($row3=mysqli_fetch_assoc($res3)) {
-                                            $food = $row3['Food'];
-                                            ?> 
-                                            <h2><?php echo $sn++.". ".$food; ?> </p> <h2>
+                                            if ($row3>0) {
+                                                while ($row3=mysqli_fetch_assoc($res3)) {
+                                                    $food = $row3['Food'];
+                                                    ?> 
+                                                    <p class = "text-left"><?php echo $sn++.". ".$food; ?><br><p>
 
-                                            <?php
+                                                    <?php
+                                                }
+                                            }
                                         }
-                                    }
-                                }
-                                
-                            ?> 
-                            
-                        </div>
-                    </li>
-                </ul>    
-            </div>
+                                        
+                                    ?> 
+                                    
+                            </div>
+                        </li>
+                        
+                </div>
+            </ul> 
+                
+        </div>
             
                 
                 <div class="clearfix"></div>
             
             
-            <div> 
-                <!--Buttons for Specifying Time Range-->
-                <form method="POST">
-                    <button type="submit" name="daily">Daily</button>
-                    <button type="submit" name="monthly">Monthly</button>
-                    <button type="submit" name="yearly">Yearly</button>
-
-                </form>
-                
-            </div>
+            
             
  
                 <!--Chart.js-->
@@ -79,12 +110,16 @@
 
                 <!-- PHP SCRIPT TO CHANGE THE Time range depending on pressed button -->
                 <?php 
-                    #Daily
-                    $sql5 = "SELECT order_date as timePeriod, total as total FROM tbl_order WHERE status = 'Delivered' ORDER BY order_date ASC";
-                    # Monthly
+                    // Displays the total sales DAILY
+                    $sql5 = "SELECT DATE_FORMAT(order_date,'%d %b %Y') as timePeriod, total as total FROM tbl_order WHERE status = 'Delivered' ORDER BY order_date ASC";
+                    
+                    // Displays the total sales per MONTH
                     if (isset($_POST['monthly'])) {
-                        $sql5 = "SELECT CONCAT(MONTHNAME(order_date), ' ', YEAR(order_date)) as timePeriod,  SUM(total) as total FROM tbl_order WHERE status = 'Delivered'   GROUP BY YEAR(order_date), MONTHNAME(order_date) ORDER BY MONTH(order_date) ASC";
-                    # Chart to display yearly     
+                        $sql5 = "SELECT DATE_FORMAT(order_date, '%b %Y') as timePeriod,  SUM(total) 
+                            as total FROM tbl_order WHERE status = 'Delivered'GROUP BY YEAR(order_date), MONTHNAME(order_date)
+                            ORDER BY MONTH(order_date) ASC";
+                    
+                    // Displays the total sales per YEAR
                     } else if (isset($_POST['yearly'])) {
                         $sql5 = "SELECT YEAR(order_date) as timePeriod, SUM(total) as total FROM tbl_order  WHERE status = 'Delivered' GROUP BY timePeriod ORDER BY YEAR(order_date)";
                     }

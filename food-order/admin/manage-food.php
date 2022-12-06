@@ -12,6 +12,8 @@
             manageFoodMessages();
            
         ?>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
           <br>
             <!-- Button to Add Admin-->
             <a href="<?php echo SITEURL;?>admin/add-food.php" class="btn-primary">Add food</a>
@@ -20,9 +22,9 @@
                     <tr>
                          <th>S.N</th>
                          <th>Title</th>
+                         <th>Image</th>
                          <th>Description</th>
                          <th>Price</th>
-                         <th>Image</th>
                          <th>Featured</th>
                          <th>Active</th>
                          <th>Actions</th>
@@ -50,8 +52,6 @@
                          <tr>
                          <td><?php echo $sn++;?></td>
                          <td><?php echo $title;?></td>
-                         <td width="400px"><?php echo $description;?></td>
-                         <td>₱ <?php echo $price;?></td>
                          <td><?php 
                               //check image availability 
                               if($image_name!="") {
@@ -63,12 +63,15 @@
 
                               }
                          ?></td>
+                         <td width="400px"><?php echo $description;?></td>
+                         <td>₱ <?php echo $price;?></td>
+                         
                          <td><?php echo $featured;?></td>
                          <td><?php echo $active;?></td>
 
                          <td>
-                              <a href="<?php echo SITEURL; ?>admin/update-food.php?id=<?php echo $id;?>" class="btn-primary">Update Food</a>
-                              <a href="<?php echo SITEURL; ?>admin/delete-food.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn-danger">Delete Food</a>
+                              <a href="<?php echo SITEURL; ?>admin/update-food.php?id=<?php echo $id;?>" class="btn-primary icon"><i class="fa fa-pencil"></i></a>
+                              <a href="<?php echo SITEURL; ?>admin/delete-food.php?id=<?php echo $id; ?>&image_name=<?php echo $image_name; ?>" class="btn-danger icon"><i class="fa fa-trash"></i></a>
                               
                          </td>
                     </tr>

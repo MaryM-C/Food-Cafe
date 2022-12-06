@@ -100,10 +100,7 @@
                             total = $total,
                             order_date = '$order_date',
                             status = '$status',
-                            cust_id='$id',
-                            customer_name = '$customer_name',
-                            customer_number = '$customer_contact',
-                            customer_address = '$customer_address'
+                            cust_id='$id'
                             ";
                     
                     //execute the query

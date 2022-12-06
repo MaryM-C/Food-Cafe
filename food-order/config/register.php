@@ -41,7 +41,7 @@ if(isset($_POST['fname']) && isset($_POST['uname']) && isset($_POST['email']) &&
            
         }
         else{
-            $sql = "SELECT * FROM tbl_user WHERE unames = ?";
+            $sql = "SELECT * FROM tbl_users WHERE unames = ?";
             $stmt = $conn->prepare($sql);
             $stmt->execute([$uname]);
     
@@ -53,7 +53,7 @@ if(isset($_POST['fname']) && isset($_POST['uname']) && isset($_POST['email']) &&
             else{
                 // hashing the password
                 $pass = password_hash($pass, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO tbl_user(fname,unames,email,passw) VALUES(?,?,?,?)";
+                $sql = "INSERT INTO tbl_users(fname,unames,email,passw) VALUES(?,?,?,?)";
                 $stmt = $conn->prepare($sql);
                 $stmt->execute([$fname, $uname, $email, $pass]);
                 header("Location: ../SignUp.php?success=Your account has been created successfully");

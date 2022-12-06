@@ -1,7 +1,7 @@
 <?php 
 session_start();
 include_once "config/db_connect.php";
-$sql = "SELECT * FROM tbl_user WHERE id = ?";
+$sql = "SELECT * FROM tbl_users WHERE id = ?";
 $user= $conn->prepare($sql);
 $id=$_SESSION['id'];
 $user->execute([$id]);
@@ -37,6 +37,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])){?>
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form action="update.php" method="POST">
       <div class="modal-body">
             <label for="fullname">Fullname</label>
             <input type="text" class="form-control w-100 mb-1" name="fullname"  placeholder="<?=$fullName?>">
@@ -46,11 +47,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['fname'])){?>
             
             <label for="emails">Email</label>
             <input type="email" class="form-control w-100 mb-1" iname="emails" placeholder="<?=$email?>">
-
       </div>
+      </form>
+      
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <a class="btn btn-primary " href="update.php" role="button">Save changes</a>
+        <a class="btn btn-primary"  name="updateData" role="button">Save changes</a>
       </div>
     </div>
   </div>

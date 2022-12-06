@@ -1,56 +1,28 @@
 <?php
+    session_start();
+    include "db_connect.php";
+    $sql = "SELECT * FROM tbl_users WHERE id = ?";
+    $user= $conn->prepare($sql);
+    $id=$_SESSION['id'];
+    $user->execute([$id]);
 
-if(isset($_POST['fullname']) && isset($_POST['username']) && isset($_POST['emails'])){
-    include('db_connect.php');
-
-    $fname=$_POST['fullname'];
-    $uname=$_POST['username'];
-    $email=$_POST['emails'];
-
-    
-
-
-    if (empty($fname)){
+    if(isset($_POST['updateData']) ){
         
-    }
-    else{
-        
-    }
-    if(empty($uname)){
-        
-    }
-    if(empty($email)){
-        $em="Email is required!";
-        header("Location:../SignUp.php?error=$em&$data");
-        exit;
-    }
-    
-    
+        $fname=$_POST['fullname'];
+        $uname=$_POST['username'];
+        $email=$_POST['emails'];
 
-    if(strlen($pass)<8){
-        $sql = "SELECT * FROM tbl_user WHERE unames = ?";
-            $stmt = $conn->prepare($sql);
-            $stmt->execute([$uname]);
-    
-            if($stmt->rowCount() == 1){
-                $em="Username is already used!";
-                header("Location:../SignUp.php?error=$em&$data");
-                exit;
-            }
-            else{
-                // hashing the password
-                $pass = password_hash($pass, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO tbl_user(fname,unames,email,passw) VALUES(?,?,?,?)";
-                $stmt = $conn->prepare($sql);
-                $stmt->execute([$fname, $uname, $email, $pass]);
-                header("Location: ../SignUp.php?success=Your account has been created successfully");
-            }
-           
-    }
-    
+        $sql = "UPDATE tbl_users SET fname = '$fname' WHERE id='$id'";
+        $result=$conn->query($sql);
 
-}
-else{
-    header("Location:../SignUp.php?error=error");
-    exit;
-}
+        if(result){
+            header("Location: ../index.php"); 
+        }
+        else{
+            header("Location: ../cart.php"); 
+        }
+
+    }
+
+
+?>

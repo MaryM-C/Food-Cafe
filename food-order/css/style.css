@@ -35,6 +35,9 @@ body, section.food-menu {
 .text-yellow{
     color: #FDB600;
 }
+.text-white{
+    color: #ffffff;
+}
 
 legend{
     color: white;
@@ -228,6 +231,10 @@ input[type="text"], input[type="tel"], textarea {
 .food-detail2{
     font-size: 1rem;
     color: #FDB600;
+}
+
+.swal-modal .swal-text {
+    text-align: center;
 }
 
 

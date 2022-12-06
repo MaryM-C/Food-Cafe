@@ -20,7 +20,7 @@ if(isset($_POST['uname']) && isset($_POST['pass'])){
 	    exit;
     }else {
 
-    	$sql = "SELECT * FROM tbl_user WHERE unames = ?";
+    	$sql = "SELECT * FROM tbl_users WHERE unames = ?";
     	$stmt = $conn->prepare($sql);
     	$stmt->execute([$uname]);
 

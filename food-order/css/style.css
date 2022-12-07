@@ -193,7 +193,7 @@ input[type="text"], input[type="tel"], textarea {
     padding: 4% 0;
 }
 .food-menu-box{
-    width: 43%;
+    width: 500px;
     margin: 1%;
     padding: 2%;
     float: left;

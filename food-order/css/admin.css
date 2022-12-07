@@ -168,6 +168,7 @@ table tr td {
     padding: 2%;
     float: left;
     box-shadow: 2px 2px 4px gray;
+    border-radius: 4px;
 
 }
 
@@ -199,7 +200,7 @@ table tr td {
 }
 
 .flex-items{
-    height: 180px;
+    height: 165px;
     display: block;
     flex-grow: 0;
     flex-shrink: 1;
